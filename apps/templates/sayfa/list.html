@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Articles for {{ year }}{% endblock %}
+
+{% block content %}
+<h1>Articles for {{ year }}</h1>
+
+{% for article in article_list %}
+    <p>{{ article.ad }}</p>
+    <p>By {{ article.not }}</p>
+
+{% endfor %}
+{% endblock %}
