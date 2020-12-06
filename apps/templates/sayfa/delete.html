@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block baslik %}PERSONEL SİL{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th colspan="2">SİLİNECEK PERSONEL</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>KATEGORİ</td>
+                <td>{{ personel.kategori }}</td>
+            </tr>
+            <tr>
+                <td>UNVAN</td>
+                <td>{{ personel.unvan }}</td>
+            </tr>
+            <tr>
+                <td>ADI SOYADI</td>
+                <td>{{ personel.ad_soyad }}</td>
+            </tr>
+            <tr>
+                <td>RESİM</td>
+                <td>{{ personel.resim }}</td>
+            </tr>
+            <tr>
+                <td>ÖZ GEÇMİŞ</td>
+                <td>{{ personel.CV }}</td>
+            </tr>
+            <tr>
+                <td>DURUM</td>
+                <td>{{ personel.durum }}</td>
+            </tr>
+            </tbody>
+        </table>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sol">
+        <button type="submit" onclick="onay()" class="push button red" id="sol"> &nbsp;&nbsp;Sil &nbsp; &nbsp;</button>
+    </div>
+    <script>
+        function onay()
+        {
+            return window.comfirm("Personel kaydını silmek istiyor musunuz?")
+        }
+    </script>
+</form>
+{% endblock %}

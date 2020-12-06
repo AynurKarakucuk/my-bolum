@@ -1,13 +1,66 @@
 {% extends "base.html" %}
 
-{% block title %}Articles for {{ year }}{% endblock %}
+{% block baslik %}PERSONEL LİSTESİ{% endblock %}
+
 
 {% block content %}
-<h1>Articles for {{ year }}</h1>
 
-{% for article in article_list %}
-    <p>{{ article.ad }}</p>
-    <p>By {{ article.not }}</p>
 
-{% endfor %}
+<script>
+var btn_git	=function(){
+		window.location = "/articles/edit";
+}
+
+var btn_cik=function(){
+    window.location = "/logout";
+}
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue" >Personel Ekle</button>
+
+</div>
+<div class="sag">
+<button type="button" onclick="btn_cik()" class="push_button red" >Çıkış</button>
+</div>
+<table class="blueTable">
+    <thead>
+    <tr>
+        <th>KATEGORİ</th>
+        <th>UNVAN</th>
+        <th>ADI SOYADI</th>
+        <th>RESİM</th>
+        <th>ÖZGEÇMİŞ</th>
+        <th>Durum</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+
+    </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="8">
+                <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    <tr>
+        {% for personel in personeller %}
+        <td>{{personel.kategori}}</td>
+        <td>{{personel.unvan}}</td>
+        <td>{{personel.ad_soyad}}</td>
+        <td>{{personel.resim}}</td>
+        <td>{{personel.CV}}</td>
+        <td>{{personel.durum}}</td>
+        <td>
+            <a href="/articles/edit/{{ personel.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/articles/delete/{{ personel.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

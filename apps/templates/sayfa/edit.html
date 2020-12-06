@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Articles for {{ year }}{% endblock %}
+
+{% block baslik %}PERSONEL EKLE{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <table class="blueTable">
+        <thead>
+            <tr><th colspan="2">PERSONEL BİLGİLERİ</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>KATEGORİ</td>
+                <td>
+                    <select name="kategori">
+                        {% if personel.kategori == 'Akademik' %}
+                        <option value="Akademik" selected>Akademik</option>
+                        <option value="idari" >İdari</option>
+                        {% else %}
+                        <option value="Akademik" >Akademik</option>
+                        <option value="idari" selected>İdari</option>
+                        {% endif %}
+                    </select>
+                    <!--<input name="katagori" value="{{personel.kategori}}">--!>
+                </td>
+            </tr>
+            <tr>
+                <td>UNVAN</td>
+                <td>
+                    <select name="unvan">
+                        {% if personel.unvan == 'Prof.Dr.' %}
+                            <option value="Prof.Dr." selected>Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör.">Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman">Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur">Memur</option>
+                        {% elif personel.unvan == 'Doç.' %}
+                            <option value="Prof.Dr." >Prof.Dr.</option>
+                            <option value="Doç." selected>Doç.</option>
+                            <option value="Dr.Öğr.Gör.">Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman">Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur">Memur</option>
+                        {% elif personel.unvan == 'Dr.Öğr.Gör.' %}
+                            <option value="Prof.Dr." >Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör." selected>Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman">Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur">Memur</option>
+                        {% elif personel.unvan == 'Öğr.Gör.' %}
+                            <option value="Prof.Dr." >Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör." >Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör." selected>Öğr.Gör.</option>
+                            <option value="Uzman">Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur">Memur</option>
+                        {% elif personel.unvan == 'Uzman' %}
+                            <option value="Prof.Dr." >Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör.">Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman" selected>Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur">Memur</option>
+                        {% elif personel.unvan == 'Tekniker' %}
+                            <option value="Prof.Dr." >Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör.">Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman" >Uzman</option>
+                            <option value="Tekniker" selected>Tekniker</option>
+                            <option value="Memur">Memur</option>
+                        {% elif personel.unvan == 'Memur' %}
+                            <option value="Prof.Dr." >Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör.">Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman" >Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur" selected>Memur</option>
+                        {% else %}
+                            <option value="Prof.Dr." selected>Prof.Dr.</option>
+                            <option value="Doç.">Doç.</option>
+                            <option value="Dr.Öğr.Gör.">Dr.Öğr.Gör.</option>
+                            <option value="Öğr.Gör.">Öğr.Gör.</option>
+                            <option value="Uzman" >Uzman</option>
+                            <option value="Tekniker">Tekniker</option>
+                            <option value="Memur" >Memur</option>
+                        {% endif %}
+                    </select>
+                    <!--<input name="unvan" value="{{personel.unvan}}">--!>
+                </td>
+            </tr>
+            <tr>
+                <td>ADI SOYADI</td>
+                <td>
+                    <input width="100%" name="ad_soyad" value="{{personel.ad_soyad}}">
+                </td>
+            </tr>
+            <tr>
+                <td>RESİM</td>
+                <td>
+                    <input width="90%" name="resim" value="{{personel.resim}}">
+                </td>
+            </tr>
+            <tr>
+                <td>ÖZGEÇMİŞ</td>
+                <td>
+                    <textarea rows="10" cols="80" name="CV" >{{personel.CV}}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Durum</td>
+                <td>
+                    {% if personel.durum == True %}
+                    <label><input type="radio" name="durum" value="1" checked="checked" >Aktif</label>
+                    <label><input type="radio" name="durum" value="0" >Pasif</label>
+                    {% elif personel.durum == False %}
+                    <label><input type="radio" name="durum" value="1" >Aktif</label>
+                    <label><input type="radio" name="durum" value="0" checked="checked" >Pasif</label>
+                    {% else %}
+                    <label><input type="radio" name="durum" value="1" >Aktif</label>
+                    <label><input type="radio" name="durum" value="0" >Pasif</label>
+                    {% endif %}
+                </td>
+
+            </tr>
+        </tbody>
+</table>
+    <div>&nbsp;</div>
+    <div class="sag">
+        <button type="reset" class="push button red">Temizle</button>
+        <button type="submit" class="push button blue">Kaydet</button>
+    </div>
+
+</form>
+{% endblock %}

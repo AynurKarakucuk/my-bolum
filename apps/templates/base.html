@@ -1,10 +1,34 @@
 {% load static %}
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>{% block title %}{% endblock %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <img src="{% static 'images/sitelogo.png' %}" alt="Logo">
+<div id="banner1">
+        <font color="#e5e5e5">
+        <h1>{% block baslik %}{% endblock %}</h1>
+        </font>
+</div>
+<div>
+     <!--
+     {% include "menu.html" %}
+     -->
+    &nbsp;
+    &nbsp;
+</div>
+<div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+</div>
+<div>
+
+
     {% block content %}{% endblock %}
+
+</div>
 </body>
 </html>
