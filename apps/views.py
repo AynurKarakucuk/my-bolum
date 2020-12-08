@@ -8,23 +8,36 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import logout
 
+"""
+Admin Sayfaları başlangıç
+"""
 
-def year_archive(request):
-    """
 
-    if request.method == "POST":
-    elif request.method == "GET":
-    elif request.method == "DELETE":
-    """
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
 
-    a_list = [
-        {"ad": "ali", "not": 1},
-        {"ad": "veli", "not": 2},
-    ]
+            return redirect('/yonetim/')
 
-    context = {'year': 2012, 'article_list': a_list, "menu": ""}
+    context = {
+        "hata": True if request.POST else False
+    }
 
-    return render(request, 'sayfa/list.html', context)
+    return render(request, 'login.html', context)
+
+
+def logout_view(request):
+    logout(request)
+
+    return redirect('/login')
+
+
+def admin_giris(request):
+    return render(request, 'admin/ana_sayfa.html')
 
 
 @login_required
@@ -33,12 +46,10 @@ def personel_detay(request, pk: int):
     personel = Personel.objects.get(id=pk)
 
     context = {
-        'year': 1,
         'personel': personel,
-        'menu': ''
     }
 
-    return render(request, 'sayfa/edit.html', context)
+    return render(request, 'admin/personel/duzenle.html', context)
 
 
 @login_required(login_url=settings.LOGIN_URL)
@@ -60,13 +71,13 @@ def personel_ekle(request, pk: int = None):
         personel.durum = request.POST.get('durum', False)
         personel.CV = request.POST['CV']
         personel.save()
-        return redirect('/articles/')
+        return redirect('/yonetim/personel/')
 
     context = {
         'personel': personel,
     }
 
-    return render(request, 'sayfa/edit.html', context)
+    return render(request, 'admin/personel/duzenle.html', context)
 
 
 @login_required(login_url=settings.LOGIN_URL)
@@ -75,7 +86,7 @@ def personel_liste(request):
 
     context = {'personeller': personeller}
 
-    return render(request, 'sayfa/list.html', context)
+    return render(request, 'admin/personel/liste.html', context)
 
 
 @login_required(login_url=settings.LOGIN_URL)
@@ -85,36 +96,22 @@ def personel_sil(request, pk: int):
     if request.method == 'POST':
         personel.delete()
 
-        return redirect('/articles/')
+        return redirect('/yonetim/personel/')
 
     context = {
         'personel': personel,
     }
 
-    return render(request, 'sayfa/delete.html', context)
+    return render(request, 'admin/personel/sil.html', context)
 
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
+"""
+Admin Sayfaları bitiş
+"""
 
-            return redirect('/articles/')
-
-    context = {
-        "hata": True if request.POST else False
-    }
-
-    return render(request, 'login.html', context)
-
-
-def logout_view(request):
-    logout(request)
-
-    return redirect('/login')
+"""
+paydaş sayfaları
+"""
 
 
 def ana_sayfa(request):

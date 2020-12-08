@@ -31,11 +31,11 @@ div { color: line; }
 }
 #banner1 {
 
-    height: 80px;
+    height: 50px;
     margin:0px auto;
     padding: 7px 6px 0;
 	background: #1D3557 repeat-x 0 -110px;
-	line_width: 80%;
+	line_width: 90%;
 
 	border-radius: 2em;
 	-webkit-border-radius: 2em;

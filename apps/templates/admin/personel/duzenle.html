@@ -1,8 +1,6 @@
-{% extends "base.html" %}
+{% extends "admin/base.html" %}
 
-{% block title %}Articles for {{ year }}{% endblock %}
-
-{% block baslik %}PERSONEL EKLE{% endblock %}
+{% block baslik %}PERSONEL DÜZENLE{% endblock %}
 
 {% block content %}
 
@@ -25,7 +23,7 @@
                         <option value="idari" selected>İdari</option>
                         {% endif %}
                     </select>
-                    <!--<input name="katagori" value="{{personel.kategori}}">--!>
+                    <!--<input name="katagori" value="{{duyuru.kategori}}">--!>
                 </td>
             </tr>
             <tr>
@@ -98,7 +96,7 @@
                             <option value="Memur" >Memur</option>
                         {% endif %}
                     </select>
-                    <!--<input name="unvan" value="{{personel.unvan}}">--!>
+                    <!--<input name="unvan" value="{{duyuru.unvan}}">--!>
                 </td>
             </tr>
             <tr>

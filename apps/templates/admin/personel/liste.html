@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "admin/base.html" %}
 
-{% block baslik %}PERSONEL LİSTESİ{% endblock %}
+{% block baslik %}PERSONEL BİLGİLERİ{% endblock %}
 
 
 {% block content %}
@@ -8,7 +8,7 @@
 
 <script>
 var btn_git	=function(){
-		window.location = "/articles/edit";
+		window.location = "/yonetim/personel/duzenle";
 }
 
 var btn_cik=function(){
@@ -53,10 +53,10 @@ var btn_cik=function(){
         <td>{{personel.CV}}</td>
         <td>{{personel.durum}}</td>
         <td>
-            <a href="/articles/edit/{{ personel.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
+            <a href="/yonetim/personel/duzenle/{{ personel.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
         </td>
         <td>
-            <a href="/articles/delete/{{ personel.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
+            <a href="/yonetim/personel/sil/{{ personel.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
         </td>
 
     </tr>

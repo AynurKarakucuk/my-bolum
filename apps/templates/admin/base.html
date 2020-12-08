@@ -1,0 +1,51 @@
+{% load static %}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="banner1">
+        <font color="#e5e5e5">
+        <h1>{% block baslik %}{% endblock %}</h1>
+        </font>
+</div>
+<div>
+
+</div>
+<div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+</div>
+<div style="width: 20%">
+    <table class="blueTable" cellpadding="10" style="float:left;">
+        <tbody>
+            <tr><th><h2>PERSONELLER</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
+            <tr><th><h2>ALT SAYFALAR</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
+            <tr><th><h2>ETKİNLİK VE HABERLER</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
+            <tr><th><h2>DUYURULAR</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
+            <tr><th><h2>KULLANICILAR</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+<div class="temizle">
+
+</div>
+<div class="sol">
+<button type="button" onclick="btn_cik()" class="push_button red" >Çıkış</button>
+</div>
+
+<div>
+
+
+    {% block content %}{% endblock %}
+
+</div>
+</body>
+</html>

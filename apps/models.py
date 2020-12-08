@@ -6,24 +6,6 @@ from django.utils.translation import gettext as _
 from django.db.models import IntegerField
 from django.utils import timezone
 
-"""
-class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return self.title
-
-"""
 class Menu(models.Model):
     id = models.IntegerField(primary_key=True)
     baslik = models.CharField(max_length=50, verbose_name="Title")
