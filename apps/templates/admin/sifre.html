@@ -1,0 +1,45 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<label style="width:120px;">Kullanıcı Adı Değiştir:</label> <input id="username" style="margin-left:20px;" type="button" id="username" value="Username"><br><br>
+<label style="width:120px;">Şifre Değiştir : </label><input id="sifre" style="margin-left:20px;" type="button" id="password" value="Password">
+
+<script>
+var username_git = function(){
+
+}
+
+var btn_cik=function(){
+    window.location = "/logout";
+}
+
+</script>
+
+
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.media }}
+
+    {{ form.non_field_errors }}
+
+    <table>
+        <thead>
+            <tr><th colspan="2">KULLANICILAR....</th></tr>
+        </thead>
+        <tbody>
+
+        {{ form.as_table }}
+
+        </tbody>
+    </table>
+
+    <div>&nbsp;</div>
+    <div class="sag">
+        <button type="reset" class="push button red">Temizle</button>
+        <button type="submit" class="push button blue">Kaydet</button>
+        <button class="push button red" onclick="btn_geri()">Geri</button>
+    </div>
+</form>
+
+
+
+{% endblock %}

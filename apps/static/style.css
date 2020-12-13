@@ -218,18 +218,20 @@ html[xmlns] #nav {
 
 /* YÖNETİM PANELİ STİLLERİ*/
 
+
+
 /* butonlar   */
 .push_button {
 	position: relative;
-	width:120px;
-	height:40px;
+	width:100px;
+	height:30px;
 	text-align:center;
 	color:#FFF;
 	text-decoration:none;
-	line-height:43px;
+	line-height:10px;
 	font-family:'Oswald', Helvetica;
-	display: block;
-	margin: 30px;
+	/*display: block;*/
+	margin: 5px;
 }
 .push_button:before {
 	background:#ACAFB8;
@@ -264,6 +266,8 @@ html[xmlns] #nav {
 	text-shadow:-1px -1px 0 #A84155;
 	background: #D25068;
 	border:1px solid #D25068;
+	width:100px;
+	height:30px;
 
 	background-image:-webkit-linear-gradient(top, #F66C7B, #D25068);
 	background-image:-moz-linear-gradient(top, #F66C7B, #D25068);
@@ -298,6 +302,8 @@ html[xmlns] #nav {
 	background-image:-ms-linear-gradient(top, #457B9D, #A8DADC);
 	background-image:-o-linear-gradient(top, #457B9D, #A8DADC);
 	background-image:linear-gradient(top, #457B9D, #A8DADC);
+	width:100px;
+	height:30px;
 
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
@@ -321,20 +327,22 @@ html[xmlns] #nav {
 
 table.blueTable {
   border: 1px solid #1C6EA4;
-  background-color: #F1FAEE;
+  background-color: #FFFFFF;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
+
 }
 table.blueTable td, table.blueTable th {
-  border: 1px solid #AAAAAA;
+  border: 1px solid #457B9D;
   padding: 3px 2px;
 }
 table.blueTable tbody td {
   font-size: 13px;
 }
+
 table.blueTable tr:nth-child(even) {
-  background: #A8DADC;
+  background: #E2F3F3;
 }
 table.blueTable thead {
   background: #1D3557;
@@ -342,12 +350,15 @@ table.blueTable thead {
   background: -webkit-linear-gradient(top, #1D3557 0%, #1D3557 66%, #F1FAEE 100%);
   background: linear-gradient(to bottom, #1D3557 0%, #1D3557 66%, #F1FAEE 100%);
   border-bottom: 2px solid #1D3557;
+
 }
 table.blueTable thead th {
   font-size: 15px;
   font-weight: bold;
   color: #FFFFFF;
   border-left: 2px solid #D0E4F5;
+  height: 50px;
+
 }
 table.blueTable thead th:first-child {
   border-left: none;
@@ -378,13 +389,19 @@ table.blueTable tfoot .links a{
 /*-------Ana Sayfa Header-------------*/
 
 div.container {
+/*
         overflow: hidden;
+*/
         width: 100%;
         display: grid;
         grid-template-columns: 2fr 6fr;
+/*
         grid-template-rows: 2fr 6fr;
+*/
         grid-gap: 15px;
+/*
         height: 95%;
+*/
 }
 
 div.container h2 {
@@ -394,7 +411,7 @@ div.container h2 {
 div.container td {
     border: 1px solid #457B9D;
     padding: 3px 2px;
-    background-color: #E2F3F3;
+    /*background-color: #E2F3F3;*/
     height: 20px%;
     width: 60px%;
 }
@@ -411,7 +428,6 @@ div.container1 {
     grid-template-columns: 3fr 3fr;
     grid-template-rows: 3fr 3fr;
     grid-gap: 50px;
-    height: 95%;
 }
 
 .headers img {

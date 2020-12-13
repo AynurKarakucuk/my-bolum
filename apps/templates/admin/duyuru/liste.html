@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}DUYURULAR{% endblock %}
+
+
+{% block content %}
+
+
+<script>
+var btn_git	=function(){
+		window.location = "/yonetim/duyuru/duzenle";
+}
+
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue" >Duyuru Ekle</button>
+
+</div>
+
+<table class="blueTable" style="margin-top:80px;">
+    <thead>
+    <tr>
+        <th>Yayın Tarihi</th>
+        <th>Başlık</th>
+        <th>Detay</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for duyuru in duyuru %}
+        <td>{{duyuru.tarih}}</td>
+        <td>{{duyuru.baslik}}</td>
+        <td>
+            <a href="/yonetim/duyuru/detay/{{ duyuru.id }}"><button>Detay</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/duyuru/duzenle/{{ duyuru.id }}"><button>Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/duyuru/sil/{{ duyuru.id }}"><button>Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

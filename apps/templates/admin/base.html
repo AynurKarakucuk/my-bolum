@@ -3,49 +3,63 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>{% block title %}{% endblock %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
     <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+    <script>
+
+        var btn_cik=function(){
+            window.location = "/logout";
+        }
+    </script>
 </head>
 <body>
 <div id="banner1">
-        <font color="#e5e5e5">
-        <h1>{% block baslik %}{% endblock %}</h1>
-        </font>
-</div>
-<div>
+
+        <h1 style="color:#e5e5e5;" class="sol">YÖNETİM PANELİ</h1>
+        <div class="sag">
+            <button type="button" onclick="btn_cik()" class="push_button red"   >Çıkış</button>
+        </div>
+        <div class="temizle"></div>
+
 
 </div>
-<div>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-</div>
-<div style="width: 20%">
-    <table class="blueTable" cellpadding="10" style="float:left;">
-        <tbody>
-            <tr><th><h2>PERSONELLER</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
-            <tr><th><h2>ALT SAYFALAR</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
-            <tr><th><h2>ETKİNLİK VE HABERLER</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
-            <tr><th><h2>DUYURULAR</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
-            <tr><th><h2>KULLANICILAR</h2></th><td><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></td></tr>
+<div class="sag">
+    <label style="text-transform: uppercase; font-weight: bold; color: #1D3557;">Hoş Geldin {{request.user.username}} </label>
 
-        </tbody>
+</div>
+
+<div>&nbsp;</div>
+<div style="width: 95%;" class="container" >
+    <table class="blueTable" cellpadding="10" style="height:300px;">
+            <thead><th>Harita Mühendisliği Bölümü </th></thead>
+            <tr><th style=""><a href="/yonetim/personel/"> PERSONELLER</a></th></tr>
+            <tr><th><a href="/yonetim/altsayfa/"> ALT SAYFALAR</a></th></tr>
+            <tr><th><a href="/yonetim/haber/">ETKİNLİK VE HABERLER</a></th></tr>
+            <tr><th><a href="/yonetim/duyuru/"> DUYURULAR</a></th></tr>
+            <tr><th><a href="/yonetim/menu">MENU</a></th></tr>
+            <tr><th><a href="/yonetim/kullanici/">KULLANICI</a></th></tr>
+            <tr><th><a href="/sifre/">ŞİFRE İŞLEMLER</a></th></tr>
+
+
+
     </table>
-
+    <div>
+        <h1 style="color: #1D3557">{%block baslik%}{% endblock%}</h1>
+        {% block content %}{% endblock %}
+    </div>
 
 </div>
 <div class="temizle">
 
 </div>
-<div class="sol">
-<button type="button" onclick="btn_cik()" class="push_button red" >Çıkış</button>
-</div>
-
-<div>
 
 
-    {% block content %}{% endblock %}
 
-</div>
 </body>
 </html>

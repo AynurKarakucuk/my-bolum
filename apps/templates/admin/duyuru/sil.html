@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}DUYURU SİL{% endblock %}
+
+{% block content %}
+ <script>
+        function onay()
+        {
+            return window.comfirm("Duyuru kaydını silmek istiyor musunuz?")
+        }
+        function btn_geri()
+        {
+		    window.location = "/yonetim/duyuru/";
+        }
+    </script>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th style=" text-transform: uppercase " colspan="2">{{ duyuru.baslik }}</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Yayın Tarihi</td>
+                <td>{{ duyuru.tarih }}</td>
+            </tr>
+            <tr>
+                <td>İçerik</td>
+                <td>{{ duyuru.icerik|safe }}</td>
+            </tr>
+            <tr>
+                <td>Durum</td>
+                <td>{{ duyuru.durum }}</td>
+            </tr>
+            <tr>
+                <td>Dosya</td>
+                <td>{% if duyuru.dosya != "" %}<fieldset data-url_root="{{duyuru.dosya.url}}"></fieldset> {% endif %} </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sag">
+        <button type="submit" onclick="onay()" class="push button red"> &nbsp;&nbsp;Sil &nbsp; &nbsp;</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
+    </div>
+
+</form>
+{% endblock %}

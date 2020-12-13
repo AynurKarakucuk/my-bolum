@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}MENU DETAY{% endblock %}
+
+{% block content %}
+
+<script>
+function btn_geri()
+{
+      window.location.replace("/yonetim/menu/")
+}
+</script>
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th colspan="2" style=" text-transform: uppercase">{{ menu.baslik }}</th></tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Başlık</td>
+                <td>{{ menu.baslik }}</td>
+            </tr>
+            <tr>
+                <td>Durum</td>
+                <td>{% if menu.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+            </tbody>
+        </table>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sag">
+        <button class="push button red" onclick="btn_geri()">Geri</button>
+    </div>
+    </div>
+
+{% endblock %}

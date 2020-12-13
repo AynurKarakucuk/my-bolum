@@ -14,26 +14,30 @@ var btn_git	=function(){
 var btn_cik=function(){
     window.location = "/logout";
 }
+
 </script>
+
+
 <div class="sol">
-    <button type="button" onclick="btn_git()" class="push_button blue" >Personel Ekle</button>
+    <button type="button" onclick="btn_git()" class="push_button blue">Personel Ekle</button>
 
 </div>
-<div class="sag">
-<button type="button" onclick="btn_cik()" class="push_button red" >Çıkış</button>
+<div>
+&nbsp;
+    &nbsp;
 </div>
-<table class="blueTable">
+
+<table class="blueTable" style="margin-top: 50px;">
     <thead>
     <tr>
-        <th>KATEGORİ</th>
-        <th>UNVAN</th>
-        <th>ADI SOYADI</th>
-        <th>RESİM</th>
-        <th>ÖZGEÇMİŞ</th>
+        <th>Kategori</th>
+        <th>Unvan</th>
+        <th>Adı Soyadı</th>
+        <th>Resim</th>
         <th>Durum</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-
+        <th>Detay</th>
+        <th>Düzenle&nbsp;</th>
+        <th>Sil</th>
     </tr>
     </thead>
     <tfoot>
@@ -49,14 +53,16 @@ var btn_cik=function(){
         <td>{{personel.kategori}}</td>
         <td>{{personel.unvan}}</td>
         <td>{{personel.ad_soyad}}</td>
-        <td>{{personel.resim}}</td>
-        <td>{{personel.CV}}</td>
-        <td>{{personel.durum}}</td>
+        <td>{% if personel.resim != "" %}<img width="60" height="60" src="{{personel.resim.url}}" alt="{{personel.ad_soyad}}" >{% endif %} </td>
+        <td>{% if personel.durum %}Aktif{% else %}Pasif{% endif %}</td>
         <td>
-            <a href="/yonetim/personel/duzenle/{{ personel.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
+            <a href="/yonetim/personel/detay/{{ personel.id }}"><button>Detay</button></a>
         </td>
         <td>
-            <a href="/yonetim/personel/sil/{{ personel.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
+            <a href="/yonetim/personel/duzenle/{{ personel.id }}"><button>Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/personel/sil/{{ personel.id }}"><button>Sil</button></a>
         </td>
 
     </tr>

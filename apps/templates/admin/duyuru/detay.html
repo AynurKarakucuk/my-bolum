@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}DUYURU DETAY{% endblock %}
+
+{% block content %}
+
+<script>
+function btn_geri()
+{
+      window.location.replace("/yonetim/duyuru/")
+}
+</script>
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th colspan="2" style=" text-transform: uppercase">{{ duyuru.baslik }}</th></tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Yayın tarihi</td>
+                <td>{{ duyuru.tarih }}</td>
+            </tr>
+            <tr>
+                <td>İçerik</td>
+                <td>{{ duyuru.icerik|safe }}</td>
+            </tr>
+            <tr>
+                <td>Durum</td>
+                <td>{% if duyuru.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+             <tr>
+                <td>Dosya</td>
+                 <td>{% if duyuru.dosya != "" %}<fieldset data-url_root="{{duyuru.dosya.url}}"></fieldset> {% endif %} </td>
+            </tr>
+            </tbody>
+        </table>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sag">
+        <button class="push button red" onclick="btn_geri()">Geri</button>
+    </div>
+    </div>
+
+{% endblock %}

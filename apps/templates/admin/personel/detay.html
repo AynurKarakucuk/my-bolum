@@ -1,20 +1,15 @@
 {% extends "admin/base.html" %}
 
-{% block baslik %}PERSONEL SİL{% endblock %}
+{% block baslik %}PERSONEL DETAY{% endblock %}
 
 {% block content %}
- <script>
-        function onay()
-        {
-            return window.comfirm("Personel kaydını silmek istiyor musunuz?")
-        }
-        function btn_geri()
-        {
-		    window.location = "/yonetim/personel/";
-        }
-    </script>
-<form method="post">
-    {% csrf_token %}
+
+<script>
+var btn_geri = function(){
+      window.location.replace("/yonetim/personel/")
+}
+</script>
+
     <div>
         <table class="blueTable">
             <thead>
@@ -34,21 +29,19 @@
                 <td>{% if personel.resim != "" %}<img width="60" height="60" src="{{personel.resim.url}}" alt="{{personel.ad_soyad}}" >{% endif %} </td>
             </tr>
             <tr>
-                <td>Öz Geçmiş</td>
-                <td>{{ personel.CV|safe }}</td>
-            </tr>
-            <tr>
                 <td>Durum</td>
                 <td>{% if personel.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+            <tr>
+                <td>Öz Geçmiş</td>
+                <td>{{ personel.CV|safe }}</td>
             </tr>
             </tbody>
         </table>
     <div>&nbsp;&nbsp;</div>
     <div class="sag">
-        <button type="submit" onclick="onay()" class="push button red"> &nbsp;&nbsp;Sil &nbsp; &nbsp;</button>
-        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
+        <button class="push button red" onclick="btn_geri()">Geri</button>
     </div>
     </div>
 
-</form>
 {% endblock %}

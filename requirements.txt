@@ -3,3 +3,5 @@ python-gettext==4.0
 
 Pillow==8.0.1
 psycopg2==2.8.6
+
+django-datetime-widget2

@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}KULLANICILAR{% endblock %}
+
+
+{% block content %}
+
+
+<script>
+var btn_git	=function(){
+		window.location = "/yonetim/kullanici/duzenle";
+}
+
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue" >Kullanıcı Ekle</button>
+
+</div>
+
+<table class="blueTable">
+    <thead>
+    <tr>
+        <th>Kullanici Adı</th>
+        <th>Durum</th>
+        <th>Yönetici</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+        {% for kullanici in kullanici %}
+        <td>{{kullanici.username}}</td>
+        <td>{{kullanici.is_active}}</td>
+        <td>{{kullanici.is_superuser}}</td>
+
+        <td>
+            <a href="/yonetim/kullanici/duzenle/{{ kullanici.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/kullanici/sil/{{ kullanici.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

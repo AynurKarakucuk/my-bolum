@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}ALT SAYFALAR{% endblock %}
+
+
+{% block content %}
+
+
+<script>
+var btn_git	=function(){
+		window.location = "/yonetim/altsayfa/duzenle";
+}
+
+var btn_cik=function(){
+    window.location = "/logout";
+}
+
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue">Alt Sayfa Ekle</button>
+
+</div>
+<div>
+&nbsp;
+    &nbsp;
+</div>
+
+<table class="blueTable" style="margin-top: 50px;">
+    <thead>
+    <tr>
+        <th>Menu</th>
+        <th>Baslik</th>
+        <th>Durum</th>
+        <th>Detay</th>
+        <th>Düzenle&nbsp;</th>
+        <th>Sil</th>
+    </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="8">
+                <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    <tr>
+        {% for altsayfa in altsayfa %}
+        <td>{{altsayfa.baslik}}</td>
+        <td>{{altsayfa.alan}}</td>
+        <td>{% if altsayfa.durum %}Aktif{% else %}Pasif{% endif %}</td>
+        <td>
+            <a href="/yonetim/altsayfa/detay/{{ altsayfa.id }}"><button>Detay</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/altsayfa/duzenle/{{ altsayfa.id }}"><button>Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/altsayfa/sil/{{ altsayfa.id }}"><button>Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

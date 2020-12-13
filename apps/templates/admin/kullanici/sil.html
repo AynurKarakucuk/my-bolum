@@ -1,0 +1,45 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}KULLANICI SİL{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th colspan="2">Kullanıcılar</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+                    <td>Adı Soyadı</td>
+                    <td>{{kullanici.ad_soyad}}</td>
+                </tr>
+                <tr>
+                    <td>Kullanıcı Adı</td>
+                    <td>{{kullanici.kullanici_adi}}</td>
+                </tr>
+                <tr>
+                    <td>Şifre</td>
+                    <td>{{kullanici.kullanici_sifre}}</td>
+                </tr>
+                <tr>
+                    <td>Yetki</td>
+                    <td>{{kullanici.kullanici_yetki}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sol">
+        <button type="submit" onclick="onay()" class="push button red" id="sol"> &nbsp;&nbsp;Sil &nbsp; &nbsp;</button>
+    </div>
+    <script>
+        function onay()
+        {
+            return window.comfirm("Personel kaydını silmek istiyor musunuz?")
+        }
+    </script>
+</form>
+{% endblock %}

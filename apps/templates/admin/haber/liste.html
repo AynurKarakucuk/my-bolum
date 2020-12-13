@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}ETKİNLİK VE HABERLER{% endblock %}
+
+
+{% block content %}
+
+
+<script>
+var btn_git	=function(){
+		window.location = "/yonetim/haber/duzenle";
+}
+
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue" >Etkinlik Ekle</button>
+
+</div>
+
+<table class="blueTable" style="margin-top:80px;">
+    <thead>
+    <tr>
+        <th>Yayın Tarihi</th>
+        <th>Başlık</th>
+        <th>Detay</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for haber in haber %}
+        <td>{{haber.tarih}}</td>
+        <td>{{haber.baslik}}</td>
+        <td>
+            <a href="/yonetim/haber/detay/{{ haber.id }}"><button>Detay</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/haber/duzenle/{{ haber.id }}"><button>Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/haber/sil/{{ haber.id }}"><button>Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}MENULER{% endblock %}
+
+
+{% block content %}
+
+
+<script>
+function btn_git(){
+		window.location = "/yonetim/menu/duzenle";
+}
+
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue" >Menu Ekle</button>
+
+</div>
+
+<table class="blueTable" style="margin-top:80px;">
+    <thead>
+    <tr>
+        <th>Menu</th>
+        <!--<th>Alan</th>
+        <th>Hedef</th>-->
+        <th>Durum</th>
+        <th>Detay</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for menu in menu %}
+        <td>{{menu.baslik}}</td>
+       <!-- <td>{{menu.alan1}}</td>
+        <td>{{menu.hedef1}}</td>-->
+        <td>{{menu.durum}}</td>
+        <td>
+            <a href="yonetim/menu/detay/{{ menu.id }}"><button>Detay</button></a>
+        </td>
+        <td>
+            <a href="yonetim/menu/duzenle/{{ menu.id }}"><button>Düzenle</button></a>
+        </td>
+        <td>
+            <a href="yonetim/menu/sil/{{ menu.id }}"><button>Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

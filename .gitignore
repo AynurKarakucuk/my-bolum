@@ -299,3 +299,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,windows,linux,visualstudiocode
 /upload/
+/staticfiles/
+/uploads/

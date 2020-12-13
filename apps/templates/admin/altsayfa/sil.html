@@ -1,16 +1,16 @@
 {% extends "admin/base.html" %}
 
-{% block baslik %}PERSONEL SİL{% endblock %}
+{% block baslik %}Alt Sayfa Sil{% endblock %}
 
 {% block content %}
  <script>
         function onay()
         {
-            return window.comfirm("Personel kaydını silmek istiyor musunuz?")
+            return window.comfirm("Alt Sayfa kaydını silmek istiyor musunuz?")
         }
         function btn_geri()
         {
-		    window.location = "/yonetim/personel/";
+		    window.location = "/yonetim/altsayfa/";
         }
     </script>
 <form method="post">
@@ -18,24 +18,16 @@
     <div>
         <table class="blueTable">
             <thead>
-                <tr><th colspan="2" style=" text-transform: uppercase">{{ personel.ad_soyad }}</th></tr>
+                <tr><th colspan="2" style=" text-transform: uppercase">{{ altsayfa.baslik }}</th></tr>
             </thead>
             <tbody>
             <tr>
-                <td>Kategori</td>
-                <td>{{ personel.kategori }}</td>
+                <td>Alan</td>
+                <td>{{ altsayfa.alan }}</td>
             </tr>
             <tr>
-                <td>Unvan</td>
-                <td>{{ personel.unvan }}</td>
-            </tr>
-            <tr>
-                <td>Resim</td>
-                <td>{% if personel.resim != "" %}<img width="60" height="60" src="{{personel.resim.url}}" alt="{{personel.ad_soyad}}" >{% endif %} </td>
-            </tr>
-            <tr>
-                <td>Öz Geçmiş</td>
-                <td>{{ personel.CV|safe }}</td>
+                <td>İçerik</td>
+                <td>{{ altsayfa.icerik|safe }}</td>
             </tr>
             <tr>
                 <td>Durum</td>

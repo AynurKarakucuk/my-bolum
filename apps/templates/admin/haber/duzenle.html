@@ -1,0 +1,91 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}{{baslik}}{% endblock %}
+
+{% block content %}
+<!--
+<form method="post">
+    {% csrf_token %}
+    <table class="blueTable">
+        <thead>
+            <tr><th colspan="2">Etkinlikler</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Yayın Tarihi</td>
+                <td>
+                    <input width="100%" name="tarih" value="{{etkinlik.tarih}}">
+                </td>
+            </tr>
+            <tr>
+                <td>Başlık</td>
+                <td>
+                    <input width="90%" name="baslik" value="{{etkinlik.baslik}}">
+                </td>
+            </tr>
+            <tr>
+                <td>İçerik</td>
+                <td>
+                    <textarea rows="10" cols="80" name="icerik" >{{etkinlik.icerik}}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Resim</td>
+                <td>
+                    <textarea rows="10" cols="80" name="resim" >{{etkinlik.resim}}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Durum</td>
+                <td>
+                    {% if etkinlik.durum == True %}
+                    <label><input type="radio" name="durum" value="1" checked="checked" >Aktif</label>
+                    <label><input type="radio" name="durum" value="0" >Pasif</label>
+                    {% elif etkinlik.durum == False %}
+                    <label><input type="radio" name="durum" value="1" >Aktif</label>
+                    <label><input type="radio" name="durum" value="0" checked="checked" >Pasif</label>
+                    {% else %}
+                    <label><input type="radio" name="durum" value="1" >Aktif</label>
+                    <label><input type="radio" name="durum" value="0" >Pasif</label>
+                    {% endif %}
+                </td>
+
+            </tr>
+        </tbody>
+</table>
+    <div>&nbsp;</div>
+    <div class="sag">
+        <button type="reset" class="push button red">Temizle</button>
+        <button type="submit" class="push button blue">Kaydet</button>
+    </div>
+
+</form> -->
+
+
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.media }}
+
+    {{ form.non_field_errors }}
+
+    <table class="blueTable">
+        <thead>
+            <tr><th colspan="2">HABER</th></tr>
+        </thead>
+        <tbody>
+
+        {{ form.as_table }}
+
+        </tbody>
+    </table>
+
+    <div>&nbsp;</div>
+    <div class="sag">
+        <button type="reset" class="push button red">Temizle</button>
+        <button type="submit" class="push button blue">Kaydet</button>
+        <button class="push button red" onclick="btn_geri">Geri</button>
+    </div>
+</form>
+
+
+{% endblock %}

@@ -1,20 +1,66 @@
 from django.urls import path
-from django.conf.urls import*
+from django.conf.urls import *
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
+urlpatterns = (
+        [
+            path('login/', views.login_view),
+            path('logout/', views.logout_view),
+            # """ Personel Sayfası"""
+            path('yonetim/personel/', views.personel_liste),
+            path('yonetim/personel/<int:pk>/', views.personel_detay),
+            path('yonetim/personel/duzenle', views.personel_ekle2),
+            path('yonetim/personel/duzenle/<int:pk>/', views.personel_ekle2),
+            path('yonetim/personel/sil/<int:pk>/', views.personel_sil),
+            path('yonetim/personel/detay/<int:pk>/', views.personel_detay),
+            # """Duyuru Sayfası"""
+            path('yonetim/duyuru/', views.duyuru_liste),
+            path('yonetim/duyuru/<int:pk>/', views.duyuru_detay),
+            path('yonetim/duyuru/duzenle', views.duyuru_ekle2),
+            path('yonetim/duyuru/duzenle/<int:pk>/', views.duyuru_ekle2),
+            path('yonetim/duyuru/sil/<int:pk>/', views.duyuru_sil),
+            path('yonetim/duyuru/detay/<int:pk>/', views.duyuru_detay),
+            # """Etkinlik Sayfası"""
+            path('yonetim/haber/', views.haber_liste),
+            path('yonetim/haber/<int:pk>/', views.haber_detay),
+            path('yonetim/haber/duzenle', views.haber_ekle2),
+            path('yonetim/haber/duzenle/<int:pk>/', views.haber_ekle2),
+            path('yonetim/haber/sil/<int:pk>/', views.haber_sil),
+            path('yonetim/haber/detay/<int:pk>/', views.haber_detay),
+            # """ Alt Sayfalar """
+            # """Etkinlik Sayfası"""
+            path('yonetim/altsayfa/', views.altsayfa_liste),
+            path('yonetim/altsayfa/<int:pk>/', views.altsayfa_detay),
+            path('yonetim/altsayfa/duzenle', views.altsayfa_ekle2),
+            path('yonetim/altsayfa/duzenle/<int:pk>/', views.altsayfa_ekle2),
+            path('yonetim/altsayfa/sil/<int:pk>/', views.altsayfa_sil),
+            path('yonetim/altsayfa/detay/<int:pk>/', views.altsayfa_detay),
+            # """ Menu Sayfası """
+            path('yonetim/menu/', views.menu_liste),
+            path('yonetim/menu/<int:pk>/', views.menu_detay),
+            path('yonetim/menu/duzenle', views.menu_ekle2),
+            path('yonetim/menu/duzenle/<int:pk>/', views.menu_ekle2),
+            path('yonetim/menu/sil/<int:pk>/', views.menu_sil),
+            path('yonetim/menu/detay/<int:pk>/', views.menu_detay),
+            # """ Kullanıcılar """
+            path('yonetim/kullanici/', views.kullanici_liste),
+            path('yonetim/kullanici/<int:pk>/', views.kullanici_detay),
+            path('yonetim/kullanici/duzenle', views.kullanici_kayit),
+            path('yonetim/kullanici/duzenle/<int:pk>/', views.kullanici_kayit),
+            path('yonetim/kullanici/sil/<int:pk>/', views.kullanici_sil),
+            path('yonetim/kullanici/detay/<int:pk>/', views.kullanici_detay),
 
-urlpatterns = [
-    path('login/', views.login_view),
-    path('logout/', views.logout_view),
-    path('yonetim/personel/', views.personel_liste),
-    path('yonetim/personel/<int:pk>/', views.personel_detay),
-    path('yonetim/personel/duzenle', views.personel_ekle),
-    path('yonetim/personel/duzenle/<int:pk>/', views.personel_ekle),
-    path('yonetim/personel/sil/<int:pk>/', views.personel_sil),
-    path('', views.ana_sayfa),
-    path('hakkinda/', views.hakkinda),
-    path('yonetim/', views.admin_giris),
+            path('', views.ana_sayfa),
+            path('hakkinda/', views.hakkinda),
+            path('yonetim/', views.admin_giris),
+            path('sifre/', views.sifre_view),
 
+            # """ ckeditor """
+            path('ckeditor/', include('ckeditor_uploader.urls')),
 
-    # url(r'^duyuru/', include('delete.html')),
-]
+        ]
+        + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+        + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)

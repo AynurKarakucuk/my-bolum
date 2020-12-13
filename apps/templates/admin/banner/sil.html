@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}MENU SİL{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th colspan="2">Menuler</th></tr>
+            </thead>
+            <th>Başlık</th>
+        <th>İçerik</th>
+        <th>Alan</th>
+        <th>hedef</th>
+        <th>Durum</th>
+            <tbody>
+                <tr>
+                    <td>Başlık</td>
+                    <td>{{ menu.baslik }}</td>
+                </tr>
+                <tr>
+                    <td>İçerik</td>
+                    <td>{{ menu.icerik }}</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>{{ menu.alan }}</td>
+                </tr>
+                <tr>
+                    <td>Hedef</td>
+                    <td>{{ menu.hedef }}</td>
+                </tr>
+
+                <tr>
+                    <td>Durum</td>
+                    <td>{{ menu.durum }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sol">
+        <button type="submit" onclick="onay()" class="push button red" id="sol"> &nbsp;&nbsp;Sil &nbsp; &nbsp;</button>
+    </div>
+    <script>
+        function onay()
+        {
+            return window.comfirm("Personel kaydını silmek istiyor musunuz?")
+        }
+    </script>
+</form>
+{% endblock %}

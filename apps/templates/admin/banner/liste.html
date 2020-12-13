@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}BANNERLAR{% endblock %}
+
+
+{% block content %}
+
+
+<script>
+var btn_git	=function(){
+		window.location = "/yonetim/banner/duzenle";
+}
+
+var btn_cik=function(){
+    window.location = "/logout";
+}
+</script>
+<div class="sol">
+    <button type="button" onclick="btn_git()" class="push_button blue" >Banner Ekle</button>
+
+</div>
+<div class="sag">
+<button type="button" onclick="btn_cik()" class="push_button red" >Çıkış</button>
+</div>
+
+<table class="blueTable">
+    <thead>
+    <tr>
+        <th>Başlık</th>
+        <th>Resim</th>
+        <th>Durum</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+        {% for banner in banner %}
+        <td>{{banner.baslik}}</td>
+        <td>{{banner.rresim}}</td>
+        <td>{{banner.durum}}</td>
+        <td>
+            <a href="/yonetim/banner/duzenle/{{ banner.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
+        </td>
+        <td>
+            <a href="/yonetim/banner/sil/{{ banner.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+
+{% block baslik %}HABER DETAY{% endblock %}
+
+{% block content %}
+
+<script>
+var btn_geri = function(){
+      window.location.replace("/yonetim/haber/")
+}
+</script>
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr><th colspan="2" style=" text-transform: uppercase">{{ haber.baslik }}</th></tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Yayın tarihi</td>
+                <td>{{ haber.tarih }}</td>
+            </tr>
+            <tr>
+                <td>İçerik</td>
+                <td>{{ haber.icerik|safe }}</td>
+            </tr>
+            <tr>
+                <td>Durum</td>
+                <td>{% if haber.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+            <tr>
+                <td>Resim</td>
+                <td>{% if haber.resim != "" %}<img width="60" height="60" src="{{haber.resim.url}}">{% endif %} </td>
+            </tr>
+             <tr>
+                <td>Dosya</td>
+                 <td>{% if haber.dosya != "" %}<fieldset data-url_root="{{haber.dosya.url}}"></fieldset> {% endif %} </td>
+            </tr>
+            </tbody>
+        </table>
+    <div>&nbsp;&nbsp;</div>
+    <div class="sag">
+        <button class="push button red" onclick="btn_geri()">Geri</button>
+    </div>
+    </div>
+
+{% endblock %}

@@ -3,20 +3,11 @@
 {% block baslik %}{{baslik}}{% endblock %}
 
 {% block content %}
-
-
-<!--
-<form method="post" action="./"  style="display: none;">
-    {% csrf_token %}
-    {{ form.media }}
-    <ul>
-        {{ form.as_ul }}
-    </ul>
-    <p><input type="submit" value="post"></p>
-</form>
--->
-
-
+<script>
+var btn_geri = function(){
+		window.location = "/yonetim/altsayfa";
+}
+</script>
 
 <form method="post" enctype="multipart/form-data" >
     {% csrf_token %}
@@ -26,7 +17,7 @@
 
     <table class="blueTable">
         <thead>
-            <tr><th colspan="2">PERSONEL BİLGİLERİ</th></tr>
+            <tr><th colspan="2">ALT SAYFALAR</th></tr>
         </thead>
         <tbody>
 
@@ -39,7 +30,7 @@
     <div class="sag">
         <button type="reset" class="push button red">Temizle</button>
         <button type="submit" class="push button blue">Kaydet</button>
-        <button class="push button red" onclick="btn_geri">Geri</button>
+        <button class="push button red" onclick="btn_geri()">Geri</button>
     </div>
 </form>
 
@@ -118,9 +109,5 @@
 </form>
 -->
 
-<script>
-var btn_geri	=function(){
-		window.location = "/yonetim/personel";
-}
-</script>
+
 {% endblock %}
