@@ -75,7 +75,7 @@ class DuyuruForm(forms.ModelForm):
 
     class Meta:
         model = Duyuru
-        fields = ['tarih', 'baslik', 'icerik', 'durum', 'dosya']
+        fields = ['tarih', 'baslik', 'icerik', 'durum', 'dosya', 'resim']
         widgets = {
             'tarih': DateTimeWidget(attrs={'id': "yourdatetimeid"}, usel10n=True, bootstrap_version=3)
         }
@@ -98,7 +98,7 @@ class AltSayfaForm(forms.ModelForm):
             ("idari", "İdari"),
             ("akademik", "Akademik"),
             ("genelbilgi", "Genel Bilgi"),
-            ("ogretim_planı", "Öğretim Planı"),
+            ("ogretim_plani", "Öğretim Planı"),
             ("ders_icerik", "Ders İçerikleri"),
             ("ogrenci_sistemi", "Öğrenci Bilgi Sistemi"),
         ],
@@ -109,7 +109,7 @@ class AltSayfaForm(forms.ModelForm):
 
     class Meta:
         model = AltSayfa
-        fields = ['baslik', 'alan', 'icerik', 'durum']
+        fields = ['baslik', 'alan', 'icerik', 'durum', 'dosya']
 
 """ Menu Form"""
 
@@ -119,7 +119,7 @@ class BannerForm(forms.ModelForm):
 
     class Meta:
         model = Banner
-        fields = ['baslik', 'durum']
+        fields = ['baslik', 'durum', 'alan']
 
 
 class YoneticiForms(UserCreationForm):

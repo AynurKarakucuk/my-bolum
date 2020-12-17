@@ -5,7 +5,7 @@
 {% block content %}
 <script>
 var btn_geri = function(){
-		window.location = "/yonetim/altsayfa";
+		window.history.back();
 }
 </script>
 
@@ -30,84 +30,9 @@ var btn_geri = function(){
     <div class="sag">
         <button type="reset" class="push button red">Temizle</button>
         <button type="submit" class="push button blue">Kaydet</button>
-        <button class="push button red" onclick="btn_geri()">Geri</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
 </form>
-
-
-<!--
-<form method="post" enctype="multipart/form-data" >
-    {% csrf_token %}
-    {{ form.media }}
-
-    {{ form.non_field_errors }}
-    {{ form.errors }}
-
-    <table class="blueTable">
-        <thead>
-            <tr><th colspan="2">PERSONEL BİLGİLERİ</th></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    {{ form.kategori.errors }}
-                    <label for="{{ form.kategori.id_for_label }}">KATEGORİ:</label>
-                </td>
-                <td>
-                    {{ form.kategori }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ form.unvan.errors }}
-                    <label for="{{ form.unvan.id_for_label }}">Ünvan:</label>
-                </td>
-                <td>
-                    {{ form.unvan }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ form.ad_soyad.errors }}
-                    <label for="{{ form.ad_soyad.id_for_label }}">Ad Soyad:</label>
-                </td>
-                <td>
-                    {{ form.ad_soyad }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ form.resim.errors }}
-                    <label for="{{ form.resim.id_for_label }}">Resim:</label>
-                </td>
-                <td>
-                    {{ form.resim }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ form.CV.errors }}
-                    <label for="{{ form.CV.id_for_label }}">CV:</label>
-                </td>
-                <td>
-                    {{ form.CV }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ form.durum.errors }}
-                    <label for="{{ form.durum.id_for_label }}">Aktif :</label>
-                </td>
-                <td>
-                    {{ form.durum }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p><input type="submit" value="post"></p>
-</form>
--->
 
 
 {% endblock %}

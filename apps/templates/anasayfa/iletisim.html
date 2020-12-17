@@ -1,0 +1,16 @@
+{% extends "anasayfa/base.html" %}
+
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<div>
+    {% block baslik %}<h2>{{baslik}}</h2>{% endblock %}
+    {% if bilgi.durum %}
+        {{bilgi.icerik|safe}}
+        {% if bilgi.dosya %}<a href="{{bilgi.dosya.url}}">{{bilgi.dosya}} </a>{% endif %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

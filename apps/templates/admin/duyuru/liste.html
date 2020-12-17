@@ -22,17 +22,22 @@ var btn_git	=function(){
     <tr>
         <th>Yayın Tarihi</th>
         <th>Başlık</th>
+        <th>Durum</th>
         <th>Detay</th>
         <th>Düzenle</th>
         <th>Sil</th>
 
     </tr>
     </thead>
+    <tfoot>
+    <td colspan="6" style="height:30px; color:#1D3557">Duyurular</td>
+    </tfoot>
     <tbody>
     <tr>
         {% for duyuru in duyuru %}
         <td>{{duyuru.tarih}}</td>
         <td>{{duyuru.baslik}}</td>
+        <td>{{duyuru.durum}}</td>
         <td>
             <a href="/yonetim/duyuru/detay/{{ duyuru.id }}"><button>Detay</button></a>
         </td>

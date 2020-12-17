@@ -7,7 +7,7 @@
 <script>
 function btn_geri()
 {
-      window.location.replace("/yonetim/duyuru/")
+      window.history.back()
 }
 </script>
     <div>
@@ -18,26 +18,30 @@ function btn_geri()
 
             <tbody>
             <tr>
-                <td>Yayın tarihi</td>
-                <td>{{ duyuru.tarih }}</td>
+                <td style="width:25%;">Yayın tarihi</td>
+                <td style="width:75%;">{{ duyuru.tarih }}</td>
             </tr>
             <tr>
-                <td>İçerik</td>
-                <td>{{ duyuru.icerik|safe }}</td>
+                <td style="width:25%;">İçerik</td>
+                <td style="width:75%;">{{ duyuru.icerik|safe }}</td>
             </tr>
             <tr>
-                <td>Durum</td>
-                <td>{% if duyuru.durum %}Aktif{% else %}Pasif{% endif %} </td>
+                <td style="width:25%;">Durum</td>
+                <td style="width:75%;">{% if duyuru.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+            <tr>
+                <td style="width:25%;">Resim</td>
+                <td style="width:75%;">{% if duyuru.resim %}<img width="60" height="60" src="{{duyuru.resim.url}}">{% endif %} </td>
             </tr>
              <tr>
-                <td>Dosya</td>
-                 <td>{% if duyuru.dosya != "" %}<fieldset data-url_root="{{duyuru.dosya.url}}"></fieldset> {% endif %} </td>
+                <td style="width:25%;">Dosya</td>
+                 <td style="width:75%;">{% if duyuru.dosya %}<a href="{{duyuru.dosya.url}}">{{duyuru.dosya}} </a> {% endif %} </td>
             </tr>
             </tbody>
         </table>
     <div>&nbsp;&nbsp;</div>
     <div class="sag">
-        <button class="push button red" onclick="btn_geri()">Geri</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
     </div>
 

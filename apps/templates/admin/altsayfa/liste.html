@@ -17,7 +17,12 @@ var btn_cik=function(){
 
 </script>
 <div class="sol">
-    <button type="button" onclick="btn_git()" class="push_button blue">Alt Sayfa Ekle</button>
+    {% if request.user.is_superuser %}
+        <button type="button" onclick="btn_git()" class="push_button blue">Alt Sayfa Ekle</button>
+    {% else %}
+        <p></p>
+    {% endif %}
+
 
 </div>
 <div>
@@ -37,11 +42,7 @@ var btn_cik=function(){
     </tr>
     </thead>
     <tfoot>
-        <tr>
-            <td colspan="8">
-                <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-            </td>
-        </tr>
+    <td colspan="6" style="height:30px; color:#1D3557">Alt Sayfalar</td>
     </tfoot>
     <tbody>
     <tr>
@@ -55,9 +56,17 @@ var btn_cik=function(){
         <td>
             <a href="/yonetim/altsayfa/duzenle/{{ altsayfa.id }}"><button>Düzenle</button></a>
         </td>
+
+         {% if request.user.is_superuser %}
         <td>
             <a href="/yonetim/altsayfa/sil/{{ altsayfa.id }}"><button>Sil</button></a>
         </td>
+        {% else %}
+        <td>
+            <a href="/yonetim/altsayfa/sil/{{ altsayfa.id }}" ><button disabled="disabled">Sil</button></a>
+        </td>
+        {% endif %}
+
 
     </tr>
     {% endfor %}

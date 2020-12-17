@@ -43,13 +43,31 @@ var btn_cik=function(){
     <tfoot>
         <tr>
             <td colspan="8">
-                <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+                <div class="links">
+
+
+                    {% if personeller.has_previous %}
+                        <a href="?sayfa={{ personeller.previous_page_number }}">Önceki</a>
+                    {% else %}
+                        <a class="passive">Önceki</a>
+                    {% endif %}
+
+                    <a class="active">{{ personeller.number }}</a>
+
+
+                    {% if personeller.has_next %}
+                        <a href="?sayfa={{personeller.next_page_number }}">Sonraki</a>
+                    {% else %}
+                         <a class="passive">Sonraki</a>
+                    {% endif %}
+
+                </div>
             </td>
         </tr>
     </tfoot>
     <tbody>
+    {% for personel in personeller %}
     <tr>
-        {% for personel in personeller %}
         <td>{{personel.kategori}}</td>
         <td>{{personel.unvan}}</td>
         <td>{{personel.ad_soyad}}</td>
@@ -64,7 +82,6 @@ var btn_cik=function(){
         <td>
             <a href="/yonetim/personel/sil/{{ personel.id }}"><button>Sil</button></a>
         </td>
-
     </tr>
     {% endfor %}
     </tbody>

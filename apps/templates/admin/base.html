@@ -16,7 +16,18 @@
         var btn_cik=function(){
             window.location = "/logout";
         }
-    </script>
+
+     </script>
+     <script>
+        var onay=function()
+        {
+            result=window.comfirm("Alt Sayfa kaydını silmek istiyor musunuz?");
+        }
+        function btn_geri()
+        {
+		    window.history.back();
+        }
+     </script>
 </head>
 <body>
 <div id="banner1">
@@ -29,12 +40,17 @@
 
 
 </div>
-<div class="sag">
-    <label style="text-transform: uppercase; font-weight: bold; color: #1D3557;">Hoş Geldin {{request.user.username}} </label>
+<div class="sag" style="font-weight: bold; color: #1D3557; margin-top:20px;">
+    {% if request.user.is_superuser %}
+        <label >Hoş Geldiniz Yönetici:</label>
+        <label style="text-transform: uppercase;"> {{request.user.username}} </label>
+    {% else %}
+        <label >Hoş Geldiniz Kullanıcı:</label>
+        <label style="text-transform: uppercase;">{{request.user.username}} </label>
+    {% endif %}
 
 </div>
 
-<div>&nbsp;</div>
 <div style="width: 95%;" class="container" >
     <table class="blueTable" cellpadding="10" style="height:300px;">
             <thead><th>Harita Mühendisliği Bölümü </th></thead>
@@ -42,11 +58,8 @@
             <tr><th><a href="/yonetim/altsayfa/"> ALT SAYFALAR</a></th></tr>
             <tr><th><a href="/yonetim/haber/">ETKİNLİK VE HABERLER</a></th></tr>
             <tr><th><a href="/yonetim/duyuru/"> DUYURULAR</a></th></tr>
-            <tr><th><a href="/yonetim/menu">MENU</a></th></tr>
             <tr><th><a href="/yonetim/kullanici/">KULLANICI</a></th></tr>
             <tr><th><a href="/sifre/">ŞİFRE İŞLEMLER</a></th></tr>
-
-
 
     </table>
     <div>

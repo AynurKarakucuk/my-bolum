@@ -1,12 +1,12 @@
 {% extends "admin/base.html" %}
 
-{% block baslik %}HABER DETAY{% endblock %}
+{% block baslik %}ETKİNLİK VE HABER DETAY{% endblock %}
 
 {% block content %}
 
 <script>
 var btn_geri = function(){
-      window.location.replace("/yonetim/haber/")
+      window.history.back()
 }
 </script>
     <div>
@@ -17,30 +17,30 @@ var btn_geri = function(){
 
             <tbody>
             <tr>
-                <td>Yayın tarihi</td>
-                <td>{{ haber.tarih }}</td>
+                <td style="width:25%;">Yayın tarihi</td>
+                <td style="width:75%;">{{ haber.tarih }}</td>
             </tr>
             <tr>
-                <td>İçerik</td>
-                <td>{{ haber.icerik|safe }}</td>
+                <td style="width:25%;">İçerik</td>
+                <td style="width:75%;">{{ haber.icerik|safe }}</td>
             </tr>
             <tr>
-                <td>Durum</td>
-                <td>{% if haber.durum %}Aktif{% else %}Pasif{% endif %} </td>
+                <td style="width:25%;">Durum</td>
+                <td style="width:75%;">{% if haber.durum %}Aktif{% else %}Pasif{% endif %} </td>
             </tr>
             <tr>
-                <td>Resim</td>
-                <td>{% if haber.resim != "" %}<img width="60" height="60" src="{{haber.resim.url}}">{% endif %} </td>
+                <td style="width:25%;">Resim</td>
+                <td style="width:75%;">{% if haber.resim %}<img width="60" height="60" src="{{haber.resim.url}}">{% endif %} </td>
             </tr>
              <tr>
-                <td>Dosya</td>
-                 <td>{% if haber.dosya != "" %}<fieldset data-url_root="{{haber.dosya.url}}"></fieldset> {% endif %} </td>
+                <td style="width:25%;">Dosya</td>
+                 <td style="width:75%;">{% if duyuru.dosya %}<a href="{{haber.dosya.url}}">{{haber.dosya}} </a> {% endif %} </td>
             </tr>
             </tbody>
         </table>
     <div>&nbsp;&nbsp;</div>
     <div class="sag">
-        <button class="push button red" onclick="btn_geri()">Geri</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
     </div>
 

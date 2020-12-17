@@ -1,9 +1,10 @@
 body {
 	font: normal .8em/1.5em Arial, Helvetica, sans-serif;
-	background: #F1FAEE;
-	width: 90%;
+	background: #F0F4FA;
+	width: 80%;
 	margin: 20px auto;
 	color: #666;
+
 }
 
 div { color: line; }
@@ -40,6 +41,20 @@ div { color: line; }
 	border-radius: 2em;
 	-webkit-border-radius: 2em;
 	-moz-border-radius: 2em;
+
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .4);
+}
+#banner2 {
+    margin: 0;
+	padding: 7px 6px 0;
+	background: #1D3557 url(img/gradient.png) repeat-x 0 -110px;
+	line-height: 95%;
+    width: 100%;
+
+	border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
 
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .4);
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .4);
@@ -386,15 +401,28 @@ table.blueTable tfoot .links a{
   padding: 2px 8px;
   border-radius: 5px;
 }
+
+table.blueTable tfoot .links a.active{
+  background: red;
+  color: #FFFFFF;
+}
+
+table.blueTable tfoot .links a.passive{
+  background: gray;
+  color: #FFFFFF;
+}
+
+
 /*-------Ana Sayfa Header-------------*/
 
 div.container {
 /*
         overflow: hidden;
 */
-        width: 100%;
+        width: 96%;
         display: grid;
         grid-template-columns: 2fr 6fr;
+        padding:10px;
 /*
         grid-template-rows: 2fr 6fr;
 */
@@ -412,8 +440,8 @@ div.container td {
     border: 1px solid #457B9D;
     padding: 3px 2px;
     /*background-color: #E2F3F3;*/
-    height: 20px%;
-    width: 60px%;
+    height: 20%;
+    width: 60%;
 }
 div.container a {
     text-decoration: none;
@@ -423,7 +451,7 @@ div.container a {
 
 div.container1 {
     overflow: hidden;
-    width: 100%;
+    width: 95%;
     display: grid;
     grid-template-columns: 3fr 3fr;
     grid-template-rows: 3fr 3fr;
@@ -432,15 +460,19 @@ div.container1 {
 
 .headers img {
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 18%;
+    height: 20%;
     margin: 2px
+
 }
+
 .headers h1 {
     color: #1D3557;
-    text-align: center;
+    text-align: left;
 	margin: 5px;
     padding: 35px;
+    margin-left: 100px;
+
 }
 
 .temizle {

@@ -24,7 +24,7 @@ SECRET_KEY = 'y-lskfin+pl#c$y@rouxv$df1n%qevbf63tjwz*7sqojbg62mm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -131,7 +131,7 @@ STATICFILES_DIRS = [
 
 
 LOGIN_URL = '/login/'
-YETKI_HATA_URL = '/hata/yetkin-yok'
+YETKI_HATA_URL = '/hata_yetki/'
 
 # ckeditor
 
@@ -146,7 +146,7 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_THUMBNAIL_SIZE = (300, 300)
 CKEDITOR_IMAGE_QUALITY = 40
 CKEDITOR_BROWSE_SHOW_DIRS = True
-CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_ALLOW_NONIMAGE_FILES = True
 
 
 CUSTOM_TOOLBAR = [

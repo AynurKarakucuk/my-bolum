@@ -1,20 +1,21 @@
 {% extends "admin/base.html" %}
-
-{% block baslik %}Alt Sayfa Sil{% endblock %}
-
-{% block content %}
- <script>
-        function onay()
+<script>
+        var onay=function()
         {
-            return window.comfirm("Alt Sayfa kaydını silmek istiyor musunuz?")
+            return window.comfirm("Alt Sayfa kaydını silmek istiyor musunuz?");
         }
         function btn_geri()
         {
-		    window.location = "/yonetim/altsayfa/";
+		    window.history.back();
         }
-    </script>
-<form method="post">
+     </script>
+{% block baslik %}Alt Sayfa Sil{% endblock %}
+
+{% block content %}
+
+<form onsubmit="return onay()" method="post">
     {% csrf_token %}
+
     <div>
         <table class="blueTable">
             <thead>
@@ -22,22 +23,26 @@
             </thead>
             <tbody>
             <tr>
-                <td>Alan</td>
-                <td>{{ altsayfa.alan }}</td>
+                <td style="width:25%;">Alan</td>
+                <td style="width:75%;">{{ altsayfa.alan }}</td>
             </tr>
             <tr>
-                <td>İçerik</td>
-                <td>{{ altsayfa.icerik|safe }}</td>
+                <td style="width:25%;">İçerik</td>
+                <td style="width:75%;">{{ altsayfa.icerik|safe }}</td>
             </tr>
             <tr>
-                <td>Durum</td>
-                <td>{% if personel.durum %}Aktif{% else %}Pasif{% endif %} </td>
+                <td style="width:25%;">Durum</td>
+                <td style="width:75%;">{% if altsayfa.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+            <tr>
+                <td style="width:25%;" >Dosya</td>
+                 <td style="width:75%;"> {% if altsayfa.dosya %}<a href="{{altsayfa.dosya.url}}">{{altsayfa.dosya}} </a> {% endif %} </td>
             </tr>
             </tbody>
         </table>
     <div>&nbsp;&nbsp;</div>
     <div class="sag">
-        <button type="submit" onclick="onay()" class="push button red"> &nbsp;&nbsp;Sil &nbsp; &nbsp;</button>
+        <button type="submit" onclick="onay()" class="push button red"> Sil </button>
         <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
     </div>

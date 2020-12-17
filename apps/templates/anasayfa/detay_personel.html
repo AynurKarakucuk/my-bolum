@@ -1,0 +1,17 @@
+{% extends "anasayfa/base.html" %}
+{% block content %}
+
+<div>
+    {% block baslik %}
+        <h2>{{bilgi.unvan}}&nbsp;{{bilgi.ad_soyad}}</h2>
+    {% endblock %}
+    <label>
+        {% if bilgi.resim != "" %}
+            <img width="60" height="60" src="{{bilgi.resim.url}}" alt="{{bilgi.ad_soyad}}" >
+        {% endif %}
+    </label>
+
+    {{bilgi.CV|safe}}
+</div>
+
+{% endblock %}

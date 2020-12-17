@@ -1,0 +1,35 @@
+{% extends "anasayfa/base.html" %}
+{% block content %}
+<script>
+var btn_ileri_geri=function(){
+            window.history.back();
+        }
+</script>
+
+<div >
+    {% block baslik %}<h2>{{bilgi.tarih}}&nbsp;{{bilgi.baslik}}</h2>{% endblock %}
+        <div  >
+            <label>{{bilgi.icerik|safe}}</label>
+        </div>
+        <label>
+            {% if bilgi.dosya != "" %}
+                <a href="{{bilgi.dosya.url}}">{{bilgi.dosya}} </a>
+            {% endif %}
+        </label><br>
+        {%if veri == "haber" %}
+            <label>
+                {% if bilgi.resim != "" %}
+                    <img style="width:80%;" src="{{bilgi.resim.url}}" alt="{{bilgi.ad_soyad}}" >
+                {% endif %}
+            </label>
+        {%endif%}
+        <div>&nbsp;</div>
+        <label class="sag" style="color:#1D3557">
+            <a href = "#" style="text-decoration:overline; color: #1D3557" onclick="btn_ileri_geri()"> Geri </a>
+
+        </label>
+
+</div>
+
+{% endblock %}
+

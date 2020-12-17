@@ -10,7 +10,7 @@
         }
         function btn_geri()
         {
-		    window.location = "/yonetim/personel/";
+		    window.history.back();
         }
     </script>
 <form method="post">
@@ -22,24 +22,24 @@
             </thead>
             <tbody>
             <tr>
-                <td>Kategori</td>
-                <td>{{ personel.kategori }}</td>
+                <td style="width:25%;">Kategori</td>
+                <td style="width:75%;">{{ personel.kategori }}</td>
             </tr>
             <tr>
-                <td>Unvan</td>
-                <td>{{ personel.unvan }}</td>
+                <td style="width:25%;">Unvan</td>
+                <td style="width:75%;">{{ personel.unvan }}</td>
             </tr>
             <tr>
-                <td>Resim</td>
-                <td>{% if personel.resim != "" %}<img width="60" height="60" src="{{personel.resim.url}}" alt="{{personel.ad_soyad}}" >{% endif %} </td>
+                <td style="width:25%;">Resim</td>
+                <td style="width:75%;">{% if personel.resim %}<img width="60" height="60" src="{{personel.resim.url}}" alt="{{personel.ad_soyad}}" >{% endif %} </td>
             </tr>
             <tr>
-                <td>Öz Geçmiş</td>
-                <td>{{ personel.CV|safe }}</td>
+                <td style="width:25%;">Öz Geçmiş</td>
+                <td style="width:75%;">{{ personel.CV|safe }}</td>
             </tr>
             <tr>
-                <td>Durum</td>
-                <td>{% if personel.durum %}Aktif{% else %}Pasif{% endif %} </td>
+                <td style="width:25%;">Durum</td>
+                <td style="width:75%;">{% if personel.durum %}Aktif{% else %}Pasif{% endif %} </td>
             </tr>
             </tbody>
         </table>

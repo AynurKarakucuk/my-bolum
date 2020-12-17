@@ -17,7 +17,7 @@ var btn_git	=function(){
 
 </div>
 
-<table class="blueTable">
+<table class="blueTable" style="margin-top: 80px;">
     <thead>
     <tr>
         <th>Kullanici Adı</th>
@@ -36,10 +36,10 @@ var btn_git	=function(){
         <td>{{kullanici.is_superuser}}</td>
 
         <td>
-            <a href="/yonetim/kullanici/duzenle/{{ kullanici.id }}"><button style="background-color: #1D3557; color: #FFFFFF" >Düzenle</button></a>
+            <a href="/yonetim/kullanici/duzenle/{{ kullanici.id }}"><button>Düzenle</button></a>
         </td>
         <td>
-            <a href="/yonetim/kullanici/sil/{{ kullanici.id }}"><button style="background-color: #D25068; color: #FFFFFF">Sil</button></a>
+            <a href="/yonetim/kullanici/sil/{{ kullanici.id }}"><button >Sil</button></a>
         </td>
 
     </tr>

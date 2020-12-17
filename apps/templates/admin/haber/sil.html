@@ -1,16 +1,16 @@
 {% extends "admin/base.html" %}
 
-{% block baslik %}DUYURU SİL{% endblock %}
+{% block baslik %}ETKİNLİK ve HABER SİL{% endblock %}
 
 {% block content %}
  <script>
         function onay()
         {
-            return window.comfirm("Duyuru kaydını silmek istiyor musunuz?")
+            return window.comfirm("Duyuru kaydını silmek istiyor musunuz?");
         }
         function btn_geri()
         {
-		    window.location = "/yonetim/haber/";
+		    window.history.back();
         }
     </script>
 <form method="post">
@@ -22,24 +22,24 @@
             </thead>
             <tbody>
             <tr>
-                <td>Yayın Tarihi</td>
-                <td>{{ haber.tarih }}</td>
+                <td style="width:25%;">Yayın Tarihi</td>
+                <td style="width:75%;">{{ haber.tarih }}</td>
             </tr>
             <tr>
-                <td>İçerik</td>
-                <td>{{ haber.icerik|safe }}</td>
+                <td style="width:25%;">İçerik</td>
+                <td style="width:75%;">{{ haber.icerik|safe }}</td>
             </tr>
             <tr>
-                <td>Durum</td>
-                <td>{{ haber.durum }}</td>
+                <td style="width:25%;">Durum</td>
+                <td style="width:75%;">{{ haber.durum }}</td>
             </tr>
               <tr>
-                <td>Resim</td>
-                <td>{% if haber.resim != "" %}<img width="60" height="60" src="{{haber.resim.url}}">{% endif %} </td>
+                <td style="width:25%;">Resim</td>
+                <td style="width:75%;">{% if haber.resim %}<img width="60" height="60" src="{{haber.resim.url}}">{% endif %} </td>
             </tr>
             <tr>
-                <td>Dosya</td>
-                <td>{% if haber.dosya != "" %}<fieldset data-url_root="{{haber.dosya.url}}"></fieldset> {% endif %} </td>
+                <td style="width:25%;">Dosya</td>
+                <td style="width:75%;">{% if haber.dosya != "" %}<a href="{{haber.dosya.url}}">{{haber.dosya}}</a> {% endif %} </td>
             </tr>
             </tbody>
         </table>

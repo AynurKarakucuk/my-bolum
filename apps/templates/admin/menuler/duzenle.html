@@ -6,8 +6,6 @@
 
 <form method="post" enctype="multipart/form-data" >
     {% csrf_token %}
-    {{ form.media }}
-
     {{ form.non_field_errors }}
 
     <table class="blueTable">
@@ -16,7 +14,7 @@
         </thead>
         <tbody>
 
-        {{ form.as_table }}
+            {{ form.as_table }}
 
         </tbody>
     </table>
@@ -25,7 +23,7 @@
     <div class="sag">
         <button type="reset" class="push button red">Temizle</button>
         <button type="submit" class="push button blue">Kaydet</button>
-        <button class="push button red" onclick="btn_geri">Geri</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
 </form>
 

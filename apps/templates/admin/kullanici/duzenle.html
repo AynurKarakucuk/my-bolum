@@ -4,48 +4,13 @@
 
 {% block content %}
 
-<script>
-var btn_geri = function(){
-		window.location = "/yonetim/kullanici";
-}
-</script>
-
-<!--
-{% if form.errors %}
-    <span style="color: red">
-        Hataları düzeltin :
-    </span>
-{% endif %}
-
-<form method="POST">
-    {% csrf_token %}
-    <table border="1">
-
-        {% for f in kullanici %}
-            {% if f.errors %}<tr >{%else %}<tr>{% endif %}
-            <th>{{ f.label }}</th>
-            <th>{{ f}}</th>
-            {% if f.errors %}<td style="color: red">{{ f.errors }}</td>{% endif %}
-            </tr>
-        {% endfor %}
-
-     <tr><td></td><td><input type="submit" value="Gönder" /></td></tr>
-    </table>
-
-</form>
-
--->
-
 <form method="post" enctype="multipart/form-data" >
     {% csrf_token %}
-    {{ form.media }}
 
     {{ form.non_field_errors }}
 
     <table>
-        <thead>
-            <tr><th colspan="2">KULLANICILAR</th></tr>
-        </thead>
+
         <tbody>
 
         {{ form.as_table }}
@@ -57,52 +22,8 @@ var btn_geri = function(){
     <div class="sag">
         <button type="reset" class="push button red">Temizle</button>
         <button type="submit" class="push button blue">Kaydet</button>
-        <button class="push button red" onclick="btn_geri()">Geri</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
 </form>
-
--->
-
-<!--
-<form method="post">
-    {% csrf_token %}
-    <table class="blueTable">
-        <thead>
-            <tr><th colspan="2">Kullanıcılar</th></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Adı Soyadı</td>
-                <td>
-                    <input width="100%" name="kullanici.ad_soyad" value="{{kullanici.ad_soyad}}">
-                </td>
-            </tr>
-            <tr>
-                <td>Kullanıcı Adı</td>
-                <td>
-                    <input width="100%" name="kullanici_adi" value="{{kullanici.kullanici_adi}}">
-                </td>
-            </tr>
-            <tr>
-                <td>Şifre</td>
-                <td>
-                    <input width="90%" name="kullanici_sifre" value="{{kullanici.kullanici_sifre}}">
-                </td>
-            </tr>
-            <tr>
-                <td>Hedef</td>
-                <td>
-                    <input width="90%" name="kullanici_yetki" value="{{kullanici.kullanici_yetki}}">
-                </td>
-            </tr>
-        </tbody>
-</table>
-    <div>&nbsp;</div>
-    <div class="sag">
-        <button type="reset" class="push button red">Temizle</button>
-        <button type="submit" class="push button blue">Kaydet</button>
-    </div>
-
-</form>-->
 
 {% endblock %}

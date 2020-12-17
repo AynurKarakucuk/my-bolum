@@ -5,19 +5,18 @@ from ckeditor.fields import RichTextField
 class Banner(models.Model):
     id = models.IntegerField(primary_key=True)
     baslik = models.CharField(max_length=100)
-    #alan1 = models.CharField(max_length=100,blank=True, null=True,)
-   # hedef1 = models.CharField(max_length=100,blank=True, null=True,)
+    alan = models.CharField(max_length=100,blank=True, null=True,)
     durum = models.BooleanField(blank=True, null=True, verbose_name='Aktif')
 
 
 class AltSayfa(models.Model):
     id = models.IntegerField(primary_key=True)
-    #menu = models.ForeignKey(Banner, on_delete=models.CASCADE)
     baslik = models.CharField(max_length=100, verbose_name='Başlık')
     icerik = RichTextField(verbose_name="içerik", null=True, blank=True)
     alan = models.CharField(max_length=100)
     hedef = models.URLField()
     durum = models.BooleanField(blank=True, null=True, verbose_name='Aktif')
+    dosya = models.FileField(blank=True, null=True, )
 
 
 class Etkinlik(models.Model):
@@ -37,13 +36,7 @@ class Duyuru(models.Model):
     icerik = RichTextField(verbose_name="içerik", null=True, blank=True)
     durum = models.BooleanField(blank=True, null=True, verbose_name='Aktif')
     dosya = models.FileField(blank=True, null=True, )
-
-
-class Banner(models.Model):
-    id = models.IntegerField(primary_key=True)
-    baslik = models.CharField(max_length=100, verbose_name='Başlık')
-    resim = models.ImageField()
-    durum = models.BooleanField(blank=True, null=True, verbose_name='Aktif')
+    resim = models.ImageField(blank=True, null=True, )
 
 
 class Personel(models.Model):

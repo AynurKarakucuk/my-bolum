@@ -6,7 +6,7 @@
 
 <script>
 var btn_geri = function(){
-      window.location.replace("/yonetim/altsayfa/")
+      window.history.back();
 }
 </script>
 
@@ -17,22 +17,26 @@ var btn_geri = function(){
             </thead>
             <tbody>
             <tr>
-                <td>Alan</td>
-                <td>{{ altsayfa.alan }}</td>
+                <td style="width:25%;">Alan</td>
+                <td style="width:75%;">{{ altsayfa.alan }}</td>
             </tr>
             <tr>
-                <td>İçerik</td>
-                <td>{{ altsayfa.icerik|safe }}</td>
+                <td style="width:25%;">İçerik</td>
+                <td style="width:75%;">{{ altsayfa.icerik|safe }}</td>
             </tr>
             <tr>
-                <td>Durum</td>
-                <td>{% if personel.durum %}Aktif{% else %}Pasif{% endif %} </td>
+                <td style="width:25%;">Durum</td>
+                <td style="width:75%;">{% if altsayfa.durum %}Aktif{% else %}Pasif{% endif %} </td>
+            </tr>
+            <tr>
+                <td style="width:25%;">Dosya</td>
+                 <td style="width:75%;">{% if altsayfa.dosya %}<a href="{{altsayfa.dosya.url}}">{{altsayfa.dosya}} </a> {% endif %} </td>
             </tr>
             </tbody>
         </table>
     <div>&nbsp;&nbsp;</div>
     <div class="sag">
-        <button class="push button red" onclick="btn_geri()">Geri</button>
+        <button type="button" class="push button red" onclick="btn_geri()">Geri</button>
     </div>
     </div>
 

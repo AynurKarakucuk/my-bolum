@@ -39,11 +39,9 @@ urlpatterns = (
             path('yonetim/altsayfa/detay/<int:pk>/', views.altsayfa_detay),
             # """ Menu Sayfası """
             path('yonetim/menu/', views.menu_liste),
-            path('yonetim/menu/<int:pk>/', views.menu_detay),
             path('yonetim/menu/duzenle', views.menu_ekle2),
             path('yonetim/menu/duzenle/<int:pk>/', views.menu_ekle2),
             path('yonetim/menu/sil/<int:pk>/', views.menu_sil),
-            path('yonetim/menu/detay/<int:pk>/', views.menu_detay),
             # """ Kullanıcılar """
             path('yonetim/kullanici/', views.kullanici_liste),
             path('yonetim/kullanici/<int:pk>/', views.kullanici_detay),
@@ -52,12 +50,33 @@ urlpatterns = (
             path('yonetim/kullanici/sil/<int:pk>/', views.kullanici_sil),
             path('yonetim/kullanici/detay/<int:pk>/', views.kullanici_detay),
 
-            path('', views.ana_sayfa),
-            path('hakkinda/', views.hakkinda),
+            # YÖNETİM GİRİŞ
             path('yonetim/', views.admin_giris),
             path('sifre/', views.sifre_view),
+            path('hata_yetki/', views.yetki_yok),
 
-            # """ ckeditor """
+            # ANA SAYFA
+            path('', views.ana_sayfa),
+            path('hakkinda/', views.hakkinda),
+            path('iletisim/', views.iletisim),
+            path('misyon_vizyon/', views.misyon),
+            path('genel_bilgi/', views.genel_bilgi),
+            path('ogretim_plani/', views.ogretim_plani),
+            path('ders_icerik/', views.ders_icerik),
+            path('bilgi_sistemi/', views.bilgi_sistemi),
+            path('idari_personel/', views.idari_personel),
+            path('idari_personel/<int:pk>/', views.idari_personel),
+            path('akademik_personel/', views.akademik_personel),
+            path('akademik_personel/<int:pk>/', views.akademik_personel),
+            path('formlar/', views.formlar_icerik),
+            path('otomasyon/', views.otomasyon_icerik),
+            path('belgeler/', views.belgeler_icerik),
+            path('haber_goster/', views.haber_goster),
+            path('duyuru_goster/', views.duyuru_goster),
+            path('haber_goster/<int:pk>/', views.haber_goster),
+            path('duyuru_goster/<int:pk>/', views.duyuru_goster),
+
+
             path('ckeditor/', include('ckeditor_uploader.urls')),
 
         ]

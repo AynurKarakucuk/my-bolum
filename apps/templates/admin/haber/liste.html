@@ -22,17 +22,22 @@ var btn_git	=function(){
     <tr>
         <th>Yayın Tarihi</th>
         <th>Başlık</th>
+        <th>Durum</th>
         <th>Detay</th>
         <th>Düzenle</th>
         <th>Sil</th>
 
     </tr>
     </thead>
+    <tfoot>
+    <td colspan="6" style="height:30px; color:#1D3557">Haber ve Etkinlikler</td>
+    </tfoot>
     <tbody>
     <tr>
         {% for haber in haber %}
         <td>{{haber.tarih}}</td>
         <td>{{haber.baslik}}</td>
+        <td>{{haber.durum}}</td>
         <td>
             <a href="/yonetim/haber/detay/{{ haber.id }}"><button>Detay</button></a>
         </td>

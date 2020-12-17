@@ -1,0 +1,41 @@
+{% extends "anasayfa/base.html" %}
+{% block content %}
+<script>
+var btn_ileri_geri=function(){
+            window.history.back();
+        }
+</script>
+<div>
+    {% block baslik %}<h2>{{baslik}}</h2>{% endblock %}
+    <table class="blueTable" style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th style="width:25%">Yayın Tarihi</th>
+                <th>Başlık</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for bilgi in bilgi %}
+            <tr>
+                <td>
+                    <img style="width:30px; height:30px; margin-right:30px;" src="/static/img/dugme.png">{{bilgi.tarih}}
+                </td>
+                <td>
+                    {% if veri == "duyuru" %}
+                         <a href="/duyuru_goster/{{ bilgi.id }}">{{bilgi.baslik}}</a>
+                    {%elif veri == "haber" %}
+                        <a href="/haber_goster/{{ bilgi.id }}">{{bilgi.baslik}}</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+    </table>
+    <div>&nbsp;</div>
+            <label class="sag" style="text-decoration:overline; color: #1D3557" style="color:#1D3557"><a href="#" onclick="btn_ileri_geri()"> Geri </a></label>
+
+
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "admin/base.html" %}
 
-{% block baslik %}DUYURU SİL{% endblock %}
+{% block baslik %}MENU SİL{% endblock %}
 
 {% block content %}
  <script>
@@ -10,7 +10,7 @@
         }
         function btn_geri()
         {
-		    window.location = "/yonetim/menu/";
+		    window.history.back();
         }
     </script>
 <form method="post">
@@ -22,8 +22,12 @@
             </thead>
             <tbody>
             <tr>
-                <td>Başlık</td>
+                <td>Menu Adı</td>
                 <td>{{ menu.baslik }}</td>
+            </tr>
+            <tr>
+                <td>Menu Alan</td>
+                <td>{{ menu.alan }}</td>
             </tr>
             <tr>
                 <td>Durum</td>

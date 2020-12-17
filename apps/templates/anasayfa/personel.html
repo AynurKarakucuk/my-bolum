@@ -1,0 +1,31 @@
+{% extends "anasayfa/base.html" %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div>
+    {% block baslik %}<h2>{{baslik}}</h2>{% endblock %}
+    <table class="blueTable">
+        <thead>
+            <tr>
+                <th>Unvan</th>
+                <th>Adı Soyadı</th>
+                <th>Resim</th>
+                <th>İçerik</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for personel in bilgi %}
+            <tr>
+
+                <td>{{personel.unvan}}</td>
+                <td>{{personel.ad_soyad}}</td>
+                <td>{% if personel.resim != "" %}<img width="60" height="60" src="{{personel.resim.url}}" alt="{{personel.ad_soyad}}" >{% endif %} </td>
+                <td><a href="/akademik_personel/{{personel.id}}">İçerik</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
