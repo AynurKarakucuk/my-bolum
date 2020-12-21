@@ -2,13 +2,6 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 
-class Banner(models.Model):
-    id = models.IntegerField(primary_key=True)
-    baslik = models.CharField(max_length=100)
-    alan = models.CharField(max_length=100,blank=True, null=True,)
-    durum = models.BooleanField(blank=True, null=True, verbose_name='Aktif')
-
-
 class AltSayfa(models.Model):
     id = models.IntegerField(primary_key=True)
     baslik = models.CharField(max_length=100, verbose_name='Başlık')
