@@ -12,17 +12,15 @@ var btn_ileri_geri=function(){
             <label>{{bilgi.icerik|safe}}</label>
         </div>
         <label>
-            {% if bilgi.dosya != "" %}
+            {% if bilgi.dosya %}
                 <a href="{{bilgi.dosya.url}}">{{bilgi.dosya}} </a>
             {% endif %}
         </label><br>
-        {%if veri == "haber" %}
-            <label>
-                {% if bilgi.resim != "" %}
+        <label>
+                {% if bilgi.resim %}
                     <img style="width:80%;" src="{{bilgi.resim.url}}" alt="{{bilgi.ad_soyad}}" >
                 {% endif %}
-            </label>
-        {%endif%}
+        </label>
         <div>&nbsp;</div>
         <label class="sag" style="color:#1D3557">
             <a href = "#" style="text-decoration:overline; color: #1D3557" onclick="btn_ileri_geri()"> Geri </a>

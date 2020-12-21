@@ -10,7 +10,7 @@ from apps.models import Duyuru
 from apps.models import Etkinlik
 from apps.models import Yonetici
 from apps.models import AltSayfa
-from apps.models import Banner
+
 
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect

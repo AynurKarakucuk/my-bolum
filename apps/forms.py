@@ -7,8 +7,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
-from apps.models import Personel, Duyuru, Etkinlik, Yonetici, AltSayfa, Banner
-
+import apps.models
 """ Personel Form"""
 
 
@@ -42,7 +41,7 @@ class PersonelForm(forms.ModelForm):
     durum = forms.BooleanField(required=False, label="Aktif")
 
     class Meta:
-        model = Personel
+        model = apps.models.Personel
         fields = ['kategori', 'unvan', 'ad_soyad', 'resim', 'CV', 'durum']
 
 
@@ -58,7 +57,7 @@ class EtkinlikForm(forms.ModelForm):
     durum = forms.BooleanField(required=False, label="Aktif")
 
     class Meta:
-        model = Etkinlik
+        model = apps.models.Etkinlik
         fields = ['tarih', 'baslik', 'icerik', 'durum', 'resim', 'dosya']
         widgets = {
             'tarih': DateTimeWidget(attrs={'id': "yourdatetimeid"}, usel10n=True, bootstrap_version=3)
@@ -74,7 +73,7 @@ class DuyuruForm(forms.ModelForm):
     durum = forms.BooleanField(required=False, label="Aktif")
 
     class Meta:
-        model = Duyuru
+        model = apps.models.Duyuru
         fields = ['tarih', 'baslik', 'icerik', 'durum', 'dosya', 'resim']
         widgets = {
             'tarih': DateTimeWidget(attrs={'id': "yourdatetimeid"}, usel10n=True, bootstrap_version=3)
@@ -108,19 +107,10 @@ class AltSayfaForm(forms.ModelForm):
     durum = forms.BooleanField(required=False, label="Aktif")
 
     class Meta:
-        model = AltSayfa
+        model = apps.models.AltSayfa
         fields = ['baslik', 'alan', 'icerik', 'durum', 'dosya']
 
 """ Menu Form"""
-
-class BannerForm(forms.ModelForm):
-
-    durum = forms.BooleanField(required=False, label="Aktif")
-
-    class Meta:
-        model = Banner
-        fields = ['baslik', 'durum', 'alan']
-
 
 class YoneticiForms(UserCreationForm):
 
