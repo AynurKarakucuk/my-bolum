@@ -32,8 +32,8 @@ var btn_git	=function(){
 
         {% for kullanici in kullanici %}
         <td>{{kullanici.username}}</td>
-        <td>{{kullanici.is_active}}</td>
-        <td>{{kullanici.is_superuser}}</td>
+        <td>{% if kullanici.is_active %} Aktif {%else%} Pasif {%endif%}</td>
+        <td>{% if kullanici.is_superuser %} Yönetici {%else%} Kullanıcı {%endif%}</td>
 
         <td>
             <a href="/yonetim/kullanici/duzenle/{{ kullanici.id }}"><button>Düzenle</button></a>

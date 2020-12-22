@@ -14,19 +14,15 @@
             <tbody>
             <tr>
                     <td>Adı Soyadı</td>
-                    <td>{{kullanici.ad_soyad}}</td>
+                    <td>{{kullanici.first_name}} {{kullanici.last_name}}</td>
                 </tr>
                 <tr>
                     <td>Kullanıcı Adı</td>
-                    <td>{{kullanici.kullanici_adi}}</td>
-                </tr>
-                <tr>
-                    <td>Şifre</td>
-                    <td>{{kullanici.kullanici_sifre}}</td>
+                    <td>{{kullanici.username}}</td>
                 </tr>
                 <tr>
                     <td>Yetki</td>
-                    <td>{{kullanici.kullanici_yetki}}</td>
+                    <td>{% if kullanici.is_superuser %} Yönetici {%else%} Kullanıcı {%endif%}</td>
                 </tr>
             </tbody>
         </table>

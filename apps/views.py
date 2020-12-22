@@ -11,7 +11,6 @@ from apps.models import Etkinlik
 from apps.models import Yonetici
 from apps.models import AltSayfa
 
-
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from django.conf import settings
@@ -112,10 +111,9 @@ def personel_ekle2(request, pk: int = None):
     personel = Personel.objects.get(id=pk) if pk else None
 
     if request.method == 'POST':
-        f = forms.PersonelForm(request.POST, request.FILES, instance=personel )
+        f = forms.PersonelForm(request.POST, request.FILES, instance=personel)
 
         if f.is_valid():
-
             f.save()
 
             return redirect('/yonetim/personel/')
@@ -202,7 +200,6 @@ def duyuru_ekle2(request, pk: int = None):
         f = forms.DuyuruForm(request.POST, request.FILES, instance=duyuru)
 
         if f.is_valid():
-
             f.save()
 
             return redirect('/yonetim/duyuru/')
@@ -233,11 +230,10 @@ def duyuru_sil(request, pk: int):
     duyuru = Duyuru.objects.get(id=pk)
     dosya = True
     resim = True
-    if duyuru.dosya is None : dosya = False
-    if duyuru.resim is None : resim = False
+    if duyuru.dosya is None: dosya = False
+    if duyuru.resim is None: resim = False
 
     if request.method == 'POST':
-
         duyuru.delete()
 
         return redirect('/yonetim/duyuru/')
@@ -393,6 +389,7 @@ Altsayfalar Son
 Menu Admin
 """
 
+
 @login_required(login_url=settings.LOGIN_URL)
 def menu_ekle2(request, pk: int = None):
     menu = Banner.objects.get(id=pk) if pk else None
@@ -411,6 +408,7 @@ def menu_ekle2(request, pk: int = None):
         'form': f,
     }
     return render(request, 'admin/menuler/duzenle.html', context)
+
 
 @login_required(login_url=settings.LOGIN_URL)
 def menu_liste(request):
@@ -436,6 +434,7 @@ def menu_sil(request, pk: int):
 
     return render(request, 'yonetim/menuler/sil.html', context)
 
+
 """
 Menu Son
 """
@@ -447,33 +446,10 @@ Kullanıcılar Admin
 
 @login_required
 def kullanici_detay(request, pk: int):
-    kullanici = Yonetici.objects.get(id=pk)
+    kullanici = User.objects.get(id=pk)
 
     context = {
         'kullanici': kullanici,
-    }
-
-    return render(request, 'admin/kullanici/duzenle.html', context)
-
-@login_required(login_url=settings.LOGIN_URL)
-def kullanici_ekle2(request, pk: int = None):
-
-    kullanici = Yonetici.objects.get(id=pk) if pk else None
-    if request.method == 'POST':
-        f = forms.YoneticiForms(request.POST, request.FILES, instance=kullanici)
-
-        if f.is_valid():
-            f.save()
-
-            return redirect('/yonetim/kullanici/')
-
-    else:
-
-        f = forms.YoneticiForms(instance=kullanici)
-
-    context = {
-        'baslik': 'MENU DÜZENLE' if pk else 'MENU EKLE',
-        'form': f,
     }
 
     return render(request, 'admin/kullanici/duzenle.html', context)
@@ -512,7 +488,7 @@ def kullanici_liste(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def kullanici_sil(request, pk: int):
-    kullanici = Yonetici.objects.get(id=pk)
+    kullanici = User.objects.get(id=pk)
 
     if request.method == 'POST':
         kullanici.delete()
@@ -538,16 +514,10 @@ Admin Sayfaları bitiş
 paydaş sayfaları
 """
 
-
-
-
-
-
 """  ANASAYFA Vieww Komutları"""
 
 
 def altsayfa_goster(request, baslik, pk: int):
-
     bilgi = AltSayfa.objects.filter(id=pk, durum=True).first()
 
     if bilgi is None:
@@ -561,7 +531,7 @@ def altsayfa_goster(request, baslik, pk: int):
         context = {
             'bilgi': bilgi,
             'baslik': baslik,
-            #'post.title': alan,
+            # 'post.title': alan,
         }
         return render(request, 'anasayfa/iletisim.html', context)
 
@@ -575,14 +545,17 @@ def misyon(request):
     bilgi = AltSayfa.objects.filter(alan="misyon_vizyon").first()
     return altsayfa_goster(request, "MİSYON VİZYON", bilgi.id)
 
+
 def hakkinda(request):
     bilgi = AltSayfa.objects.filter(alan="hakkinda").first()
     return altsayfa_goster(request, "HAKKINDA", bilgi.id)
+
 
 def genel_bilgi(request):
     bilgi = AltSayfa.objects.filter(alan="genelbilgi").first()
 
     return altsayfa_goster(request, "Genel Bilgi", bilgi.id)
+
 
 def ogretim_plani(request):
     bilgi = AltSayfa.objects.filter(alan="ogretim_plani").first()
@@ -593,21 +566,25 @@ def ders_icerik(request):
     bilgi = AltSayfa.objects.filter(alan="ders_icerik").first()
     return altsayfa_goster(request, "Ders İçerikleri", bilgi.id)
 
+
 def bilgi_sistemi(request):
     bilgi = AltSayfa.objects.filter(alan="ogrenci_sistemi").first()
     return altsayfa_goster(request, "Öğrenci Bilgi Sistemi", bilgi.id)
+
 
 def formlar_icerik(request):
     bilgi = AltSayfa.objects.filter(baslik="Formlar").first()
 
     return altsayfa_goster(request, "Formlar", bilgi.id)
 
+
 def otomasyon_icerik(request):
     bilgi = AltSayfa.objects.filter(baslik="Öğrenci Otomasyon").first()
     return altsayfa_goster(request, "Öğrenci Otomasyon", bilgi.id)
 
+
 def belgeler_icerik(request):
-    bilgi = AltSayfa.objects.filter(baslik="Belgeler",).first()
+    bilgi = AltSayfa.objects.filter(baslik="Belgeler", ).first()
     return altsayfa_goster(request, "Belgeler", bilgi.id)
 
 
@@ -634,7 +611,7 @@ def idari_personel(request, pk: int = None):
 def akademik_personel(request, pk: int = None):
     if pk:
         bilgi = Personel.objects.get(id=pk)
-        context={'bilgi': bilgi}
+        context = {'bilgi': bilgi}
         return render(request, 'anasayfa/detay_personel.html', context)
     else:
         bilgi = Personel.objects.filter(kategori='Akademik', durum=True)
@@ -643,9 +620,9 @@ def akademik_personel(request, pk: int = None):
             return render(request, 'anasayfa/personel.html', context)
 
         context = {
-        'bilgi': bilgi,
-        'baslik': "Akademik Personeller",
-        'post.title': "akademik",
+            'bilgi': bilgi,
+            'baslik': "Akademik Personeller",
+            'post.title': "akademik",
         }
         return render(request, 'anasayfa/personel.html', context)
 
@@ -662,13 +639,13 @@ def haber_goster(request, pk: int = None):
         bilgi1 = Etkinlik.objects.filter(durum=True)
         bilgi = bilgi1.order_by('tarih')
 
-
         context = {
             'bilgi': bilgi,
             'baslik': "Etkinlik ve Haberler",
             'veri': "haber",
         }
         return render(request, 'anasayfa/haber_goster.html', context)
+
 
 def duyuru_goster(request, pk: int = None):
     if pk:
@@ -688,21 +665,21 @@ def duyuru_goster(request, pk: int = None):
         }
         return render(request, 'anasayfa/haber_goster.html', context)
 
+
 def ana_sayfa(request):
-        sayfa = request.GET.get('sayfa', 1)
+    sayfa = request.GET.get('sayfa', 1)
 
-        bilgi1 = Etkinlik.objects.filter(durum=True)
-        etkinlik_tum = bilgi1.order_by('tarih')
-        paginator = Paginator(etkinlik_tum, 3)
-        haber = paginator.page(int(sayfa))
+    bilgi1 = Etkinlik.objects.filter(durum=True)
+    etkinlik_tum = bilgi1.order_by('tarih')
+    paginator = Paginator(etkinlik_tum, 3)
+    haber = paginator.page(int(sayfa))
 
-        bilgi2 = Duyuru.objects.filter(durum=True)
-        duyuru_tum = bilgi2.order_by('tarih')
-        paginator_duyuru = Paginator(duyuru_tum, 3)
-        duyuru = paginator_duyuru.page(int(sayfa))
-        context = {
-            'haber': haber,
-            'duyuru': duyuru,
-        }
-        return render(request, 'anasayfa/ana_sayfa.html', context)
-
+    bilgi2 = Duyuru.objects.filter(durum=True)
+    duyuru_tum = bilgi2.order_by('tarih')
+    paginator_duyuru = Paginator(duyuru_tum, 3)
+    duyuru = paginator_duyuru.page(int(sayfa))
+    context = {
+        'haber': haber,
+        'duyuru': duyuru,
+    }
+    return render(request, 'anasayfa/ana_sayfa.html', context)
